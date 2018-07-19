@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  # before_filter :authorize, :except =>[:new]
     def new
     end
   
@@ -12,12 +13,12 @@ class SessionsController < ApplicationController
           redirect_to '/'
         else
         # If user's login doesn't work, send them back to the login form.
-          redirect_to '/login'
+          redirect_to '/sessions/new'
         end
       end
     
       def destroy
         session[:user_id] = nil
-        redirect_to '/login'
+        redirect_to '/sessions/new'
       end
 end
