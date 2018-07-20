@@ -26,6 +26,23 @@
         </dl>
       </div>
 
+
+      <% if current_user %>
+      <div class="col-sm-8">
+      <dl class="dl-horizontal">
+        <h2> Leave a review </h2>
+        <%= form_for :reviews, url: product_reviews_path(@product.id) do |f| %>
+        <dt><%= f.label "Rating:"%> </dt>
+        <dd> <%= f.select :rating, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]] %> <dd>
+        <%= f.text_area :description, placeholder: "Leave a comment"%>
+        <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+        <% end %>
+        </dl>
+        </div>
+      <% end %>
+
+   
+
       <div class="col-sm-8">
         <dl class="dl-horizontal">
         <h2> Reviews </h2>
@@ -33,19 +50,22 @@
             <dt> User </dt>
             <% User.where(id: review.user_id).each do |name| %>
             <dd><%= name.first_name %></dd> 
-            <% end %>
+            
             <dt> Rating </dt> 
             <dd><%= review.rating %></dd>
             <dt> Description </dt>
             <dd><%= review.description %></dd>
+            <% if name == current_user %>
+            <dd><%= link_to 'Delete', "/products/#{@product.id}/reviews/#{review.id}", method: :delete, class: 'btn btn-danger' %></dd>
+            <% end %>
+            <% end %>
           <% end %>
         </dl>
-    </div>
+      </div>
 
-    </div>
 
-    
 
+
+  </div>
   </article>
-
 </section>
