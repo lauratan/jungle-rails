@@ -3,6 +3,9 @@
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
 ## Final Product 
+!["Homepage"](https://github.com/lauratan/jungle-rails/blob/master/docs/homepage.png)
+!["Logged in User"](https://github.com/lauratan/jungle-rails/blob/master/docs/loggedin.png)
+!["Reviews"](https://github.com/lauratan/jungle-rails/blob/master/docs/reviews.png)
 
 ## Setup
 
